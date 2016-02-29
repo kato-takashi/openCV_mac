@@ -20,6 +20,8 @@
 //}
 
 
+//画像の読み込み
+/*
 #include "cv.h"
 #include "highgui.h"
 
@@ -48,4 +50,26 @@ int main(int argc, const char * argv[]){
     cvReleaseImage(&img);
     
     return 0;
+}
+*/
+
+#include "highgui.h"
+
+int main(int argc, const char * argv[]){
+    cvNamedWindow("testAvi", CV_WINDOW_AUTOSIZE);
+    char imgfile[] = "/Users/katotakashi/Desktop/test.avi";
+    CvCapture* capture = cvCreateFileCapture(imgfile);
+    IplImage* frame;
+    while (1) {
+        frame = cvQueryFrame(capture);
+        if (!frame)break;
+        
+        cvShowImage("testAvi", frame);
+        char c = cvWaitKey(33);
+        if (c ==27)break;
+    
+        cvReleaseCapture(&capture);
+        cvDestroyWindow("testAvi");
+    }
+    
 }

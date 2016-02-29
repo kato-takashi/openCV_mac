@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "370874D56D9505AB18D8E83D0FD85643994C62DE",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "98E05A09A3AB3EB50FE5B910E718F57AA958F749" : 0,
+    "370874D56D9505AB18D8E83D0FD85643994C62DE" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "902EB788-A3C6-470D-A588-764955FB2887",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "98E05A09A3AB3EB50FE5B910E718F57AA958F749" : "",
+    "370874D56D9505AB18D8E83D0FD85643994C62DE" : "openCV_mac\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "opencvtest",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "opencvtest\/opencvtest.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:kato-takashi\/openCV_mac.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "370874D56D9505AB18D8E83D0FD85643994C62DE"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:kato-takashi\/openCVtest.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "98E05A09A3AB3EB50FE5B910E718F57AA958F749"
+    }
+  ]
+}
