@@ -4,7 +4,7 @@
 //
 //  Created by KatoTakashi on 2016/02/29.
 //  Copyright © 2016年 KatoTakashi. All rights reserved.
-//
+
 
 #include <iostream>
 #include <opencv2/core.hpp>
@@ -18,3 +18,34 @@ int main(int argc, const char * argv[])
     
     cv::waitKey(0);
 }
+
+//
+//#include "cv.h"
+//#include "highgui.h"
+//
+//int main(int argc, const char * argv[]){
+//    // 画像ファイルポインタの宣言
+//    IplImage* img;
+//    // 読み込み画像ファイル名
+//    char imgfile[] = "/Users/katotakashi/Desktop/lena.jpg";
+//    
+//    // 画像の読み込み
+//    img = cvLoadImage(imgfile, CV_LOAD_IMAGE_ANYCOLOR | CV_LOAD_IMAGE_ANYDEPTH);
+//    
+//    // 画像の表示用ウィンドウ生成
+//    cvNamedWindow("lena", CV_WINDOW_AUTOSIZE);
+//    
+//    // 指定したウィンドウ内に画像を表示する
+//    cvShowImage("lena", img);
+//    
+//    // キー入力待ち
+//    cvWaitKey(0);
+//    
+//    // 指定したウィンドウの破棄を行う
+//    cvDestroyWindow("lena");
+//    
+//    // 生成した画像ヘッダ、及びそのデータ領域を解放する
+//    cvReleaseImage(&img);
+//    
+//    return 0;
+//}
