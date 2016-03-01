@@ -57,7 +57,7 @@ int main(int argc, const char * argv[]){
 
 int main(int argc, const char * argv[]){
     cvNamedWindow("testAvi", CV_WINDOW_AUTOSIZE);
-    char imgfile[] = "/Users/katotakashi/Desktop/test.avi";
+    char imgfile[] = "/Users/katotakashi/Desktop/test.MOV";
     CvCapture* capture = cvCreateFileCapture(imgfile);
     IplImage* frame;
     while (1) {
@@ -67,9 +67,8 @@ int main(int argc, const char * argv[]){
         cvShowImage("testAvi", frame);
         char c = cvWaitKey(33);
         if (c ==27)break;
-    
-        cvReleaseCapture(&capture);
-        cvDestroyWindow("testAvi");
     }
+    cvReleaseCapture(&capture);
+    cvDestroyWindow("testAvi");
     
 }
