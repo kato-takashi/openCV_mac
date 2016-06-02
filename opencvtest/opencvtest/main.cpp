@@ -54,21 +54,52 @@ int main(int argc, const char * argv[]){
 */
 
 #include "highgui.h"
+#include "cv.h"
+
+int g_slider_position = 0;
+CvCapture* g_capture = NULL;
+
+void onTrackbarSlide(int pos){
+    cvSetCaptureProperty(g_capture, CV_CAP_PROP_POS_FRAMES, pos);
+}
+
+//映像表示
+//int main(int argc, const char * argv[]){
+//    cvNamedWindow("testAvi", CV_WINDOW_AUTOSIZE);
+//    char imgfile[] = "/Users/katotakashi/Documents/git/study/oepnCVmac/opencvtest/opencvtest/test.mov";
+//    CvCapture* capture = cvCreateFileCapture(imgfile);
+//    IplImage* frame;
+//    while (1) {
+//        frame = cvQueryFrame(capture);
+//        if (!frame)break;
+//        
+//        cvShowImage("testAvi", frame);
+//        char c = cvWaitKey(33);
+//        if (c ==27)break;
+//    }
+//    cvReleaseCapture(&capture);
+//    cvDestroyWindow("testAvi");
+//    
+//}
 
 int main(int argc, const char * argv[]){
     cvNamedWindow("testAvi", CV_WINDOW_AUTOSIZE);
-    char imgfile[] = "/Users/katotakashi/Desktop/test.MOV";
-    CvCapture* capture = cvCreateFileCapture(imgfile);
-    IplImage* frame;
-    while (1) {
-        frame = cvQueryFrame(capture);
-        if (!frame)break;
-        
-        cvShowImage("testAvi", frame);
-        char c = cvWaitKey(33);
-        if (c ==27)break;
+    char imgfile[] = "/Users/katotakashi/Documents/git/study/oepnCVmac/opencvtest/opencvtest/test.mov";
+    g_capture = cvCreateFileCapture(imgfile);
+    int frames = (int) cvGetCaptureProperty(g_capture, CV_CAP_PROP_FRAME_COUNT);
+    if (frames!=0) {
+        cvCreateTrackbar("Position", "testAvi", &g_slider_position, frames, onTrackbarSlide);
     }
-    cvReleaseCapture(&capture);
-    cvDestroyWindow("testAvi");
     
+        IplImage* frame;
+        while (1) {
+            frame = cvQueryFrame(g_capture);
+            if (!frame)break;
+    
+            cvShowImage("testAvi", frame);
+            char c = cvWaitKey(33);
+            if (c ==27)break;
+        }
+        cvReleaseCapture(&g_capture);
+        cvDestroyWindow("testAvi");
 }
