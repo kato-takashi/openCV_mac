@@ -110,6 +110,35 @@ int main(int argc, const char * argv[]){
 #include "highgui.h"
 #include "cv.h"
 
+//cvPryDown()を用いて入力画像の半分の幅と高さを持つ新しい画像を作成する
+//IPL_GAUSSIAN_5x5 -> CV_GAUSSIAN_5x5に変更
+IplImage* doPyrDown(IplImage* in, int filter = CV_GAUSSIAN_5x5){
+    //入力画像が2で割るとベスト
+    assert(in->width%2==0 && in->height%2 == 0);
+    
+    IplImage* out = cvCreateImage(CvSize(in->width/2, in->height/2), in->depth, in->nChannels);
+    cvPyrDown(in, out);
+    return (out);
+};
+
+
+//Cannyエッジ検出器は出力をシングルチャンネル（グレースケール）の画像に書き込む
+IplImage* doCanny(
+    IplImage* in,
+    double lowThresh,
+    double highTresh,
+    double aperture
+){
+    if(in->nChannels !=1)
+        return(0); //Cannyはグレースケールの画像だけ扱う
+    IplImage* out = cvCreateImage(
+                                  cvGetSize(in),
+                                  in->depth, //IPL_DEPTH_8U
+                                  1);
+    cvCanny(in, out, lowThresh, highTresh, aperture);
+    return (out);
+}
+
 int main(int argc, const char * argv[]){
     // 画像ファイルポインタの宣言
     IplImage* img;
@@ -126,6 +155,9 @@ int main(int argc, const char * argv[]){
     
     //平滑化した出力を保持する画像
     IplImage* out = cvCreateImage(cvGetSize(img), IPL_DEPTH_8U, 3);
+    IplImage* in = cvCreateImage(cvGetSize(img), IPL_DEPTH_8U, 3);
+    
+    IplImage*image1 = doPyrDown(in, CV_GAUSSIAN_5x5);
     
     //平滑化処理
     cvSmooth(img, out, CV_GAUSSIAN, 3, 3);
@@ -150,3 +182,23 @@ int main(int argc, const char * argv[]){
     
     return 0;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
